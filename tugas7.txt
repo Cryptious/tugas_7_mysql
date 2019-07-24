@@ -1,0 +1,25 @@
+1. Buatlah struktur tabel yang akan menampung data-data diatas (CREATE TABLE). Kali ini saya tidak akan membatasi nama tabel, nama kolom maupun tipe datanya. Silahkan teman-teman berkreasi sendiri.
+
+2. Input 8 kota pertama menggunakan query INSERT ... VALUES, bisa menginputnya satu per satu (satu query INSERT untuk setiap baris), atau sekaligus dalam satu query INSERT.
+
+3. Input 2 kota terakhir menggunakan query INSERT ... SET.
+
+4. Buat tabel kedua dengan menggunakan struktur yang sama dengan tabel pertama. Artinya, akan ada 2 tabel: Tabel pertama yang sudah berisi data (yang kita buat berdasarkan soal 1 - 3), dan tabel kedua yang belum berisi data. Struktur tabel pertama dan kedua ini sama persis, dimana sama-sama terdiri dari 5 kolom.
+
+5. Ubah tabel kedua, hapus kolom Kecamatan, Kelurahan dan Luas Wilayah. Sehingga tabel kedua hanya berisi 2 kolom saja: Nama Kota dan Jumlah Penduduk.
+
+6. Input tabel kedua dengan data yang diambil dari tabel pertama. Disini gunakan query INSERT ... SELECT. Perhatikan bahwa jumlah kolom di tabel kedua hanya tinggal 2 buah: Nama Kota dan Jumlah Penduduk. Struktur kolom ini sudah tidak sama dengan jumlah kolom dari tabel pertama. Hasil akhirnya dari query INSERT ... SELECT, tabel kedua akan berisi 10 nama kota beserta jumlah penduduk, seperti tampilan berikut:
+
+
+1. CREATE TABLE `tugas_mysql_niomic`.`data_penduduk` ( `nama_kota` VARCHAR(50) NOT NULL ,  `kecamatan` INT NOT NULL ,  `kelurahan` INT NOT NULL ,  `luas_wilayah` FLOAT NOT NULL ,  `jumlah_penduduk` INT NOT NULL ,    PRIMARY KEY  (`nama_kota`)) ENGINE = InnoDB;
+
+2. INSERT INTO `data_penduduk` (`nama_kota`, `kecamatan`, `kelurahan`, `luas_wilayah`, `jumlah_penduduk`) VALUES ('Jakarta', '44', '267', '664', '9988495'), ('Surbaya', '31', '154', '350', '2805906'), ('Medan', '21', '151', '265', '2465469'), ('Bekasi', '12', '56', '206', '2381053'), ('Bandung', '30', '151', '167', '2339463'), ('Makasar', '14', '143', '199', '1651146'), ('Depok', '11', '63', '200', '1631951'), ('Semarang', '16', '177', '373', '1621384')
+
+3. INSERT INTO `data_penduduk` SET nama_kota='Tangerang',kecamatan='13',kelurahan='104',luas_wilayah='153',jumlah_penduduk='1566190'
+INSERT INTO `data_penduduk` SET nama_kota='Palembang',kecamatan='14',kelurahan='107',luas_wilayah='363',jumlah_penduduk='1548064'
+
+4. CREATE TABLE data_penduduk_2 LIKE data_penduduk
+
+5. ALTER TABLE `data_penduduk_2` DROP `kecamatan`, DROP `kelurahan`, DROP `luas_wilayah`;
+
+6. INSERT INTO data_penduduk_2 select nama_kota, jumlah_penduduk from data_penduduk;
